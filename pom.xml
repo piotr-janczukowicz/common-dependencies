@@ -3,13 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>pl.piotrjanczukowicz</groupId>
-  <artifactId>commons-dependencies</artifactId>
+  <artifactId>common-dependencies</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>commons-dependencies</name>
+  <name>common-dependencies</name>
   <description>Parent POM and Bill of Materials for shared dependency and plugin versions</description>
-  <url>https://github.com/piotr-janczukowicz/commons-dependencies</url>
+  <url>https://github.com/piotr-janczukowicz/common-dependencies</url>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
@@ -18,15 +18,15 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:https://github.com/piotr-janczukowicz/commons-dependencies.git</connection>
-    <developerConnection>scm:git:https://github.com/piotr-janczukowicz/commons-dependencies.git</developerConnection>
-    <url>https://github.com/piotr-janczukowicz/commons-dependencies</url>
+    <connection>scm:git:https://github.com/piotr-janczukowicz/common-dependencies.git</connection>
+    <developerConnection>scm:git:https://github.com/piotr-janczukowicz/common-dependencies.git</developerConnection>
+    <url>https://github.com/piotr-janczukowicz/common-dependencies</url>
   </scm>
   <distributionManagement>
     <repository>
       <id>github</id>
       <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/piotr-janczukowicz/commons-dependencies</url>
+      <url>https://maven.pkg.github.com/piotr-janczukowicz/common-dependencies</url>
     </repository>
   </distributionManagement>
 
