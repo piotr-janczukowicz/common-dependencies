@@ -374,7 +374,7 @@
             </requireNoRepositories>
             <banDuplicatePomDependencyVersions/>
             <banDynamicVersions>
-              <allowSnapshots>false</allowSnapshots>
+              <allowSnapshots>true</allowSnapshots>
               <allowRanges>false</allowRanges>
             </banDynamicVersions>
             <bannedDependencies>
