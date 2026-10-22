@@ -56,7 +56,7 @@ jobs:
       - name: Deploy release
         run: |
           mvn -B versions:set -DnewVersion=${{ steps.version.outputs.release }} -DgenerateBackupPoms=false
-          mvn -B deploy
+          mvn -B deploy -DdeployAtEnd=false
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Tag and create GitHub release

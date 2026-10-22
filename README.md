@@ -4,13 +4,13 @@ This module is a Maven bill of materials for shared library and plugin versions.
 
 ## Dependency
 
-Java 21 and Maven. Coordinates: `pl.piotrjanczukowicz:common-dependencies:1.0.0-SNAPSHOT` (`pom`).
+Java 21 and Maven. Coordinates: `pl.piotrjanczukowicz:common-dependencies:2` (`pom`).
 
 ```xml
 <parent>
   <groupId>pl.piotrjanczukowicz</groupId>
   <artifactId>common-dependencies</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>2</version>
 </parent>
 ```
 
@@ -29,4 +29,4 @@ Set the parent, then declare managed dependencies without a `<version>`.
 
 ## License
 
-Apache License, Version 2.0
+MIT License
