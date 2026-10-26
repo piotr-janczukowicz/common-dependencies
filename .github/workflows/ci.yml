@@ -53,10 +53,30 @@ jobs:
             echo "::error::Tag v${{ steps.version.outputs.release }} already exists"
             exit 1
           fi
-      - name: Deploy release
-        run: |
-          mvn -B versions:set -DnewVersion=${{ steps.version.outputs.release }} -DgenerateBackupPoms=false
-          mvn -B deploy -DdeployAtEnd=false
+      - name: Set release version
+        run: mvn -B versions:set -DnewVersion=${{ steps.version.outputs.release }} -DgenerateBackupPoms=false
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+          server-id: central
+          server-username: CENTRAL_USERNAME
+          server-password: CENTRAL_PASSWORD
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      - name: Publish to Maven Central
+        run: mvn -B deploy -Pcentral -DskipTests
+        env:
+          CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
+          CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+          server-id: github
+      - name: Deploy to GitHub Packages
+        run: mvn -B deploy -DdeployAtEnd=false
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Tag and create GitHub release
