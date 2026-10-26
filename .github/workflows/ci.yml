@@ -64,8 +64,10 @@ jobs:
           server-password: CENTRAL_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      - name: Show the imported signing key
+        run: gpg --list-secret-keys --keyid-format long
       - name: Publish to Maven Central
-        run: mvn -B deploy -Pcentral -DskipTests
+        run: mvn -B deploy -Pcentral -Prelease -Dgpg.keyname=E1A4492D376821D0680C6C758D93BEA6026504E0
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
@@ -76,7 +78,7 @@ jobs:
           java-version: "21"
           server-id: github
       - name: Deploy to GitHub Packages
-        run: mvn -B deploy -DdeployAtEnd=false
+        run: mvn -B deploy -DdeployAtEnd=false -Prelease
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Tag and create GitHub release
